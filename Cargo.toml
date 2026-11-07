@@ -1,0 +1,12 @@
+# Each member takes a crates.io crate's name, so a binary's [patch.crates-io]
+# finds it here by that name.
+[workspace]
+members = ["ring"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+# crates.io has each member's name, so none is published.
+publish = false
+repository = "https://github.com/moq-dev/rind-patch"
+license = "Apache-2.0 OR ISC OR MIT-0"

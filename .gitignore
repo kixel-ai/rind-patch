@@ -1,0 +1,3 @@
+# Cargo uses the lockfile of the binary that patches these crates in.
+Cargo.lock
+target/
