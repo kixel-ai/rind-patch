@@ -1,7 +1,7 @@
 # Each member takes a crates.io crate's name, so a binary's [patch.crates-io]
 # finds it here by that name.
 [workspace]
-members = ["ring"]
+members = ["ring", "aws-lc-rs"]
 resolver = "3"
 
 [workspace.package]

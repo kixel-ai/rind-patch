@@ -1,0 +1,29 @@
+[package]
+name = "aws-lc-rs"
+# Above crates.io's 1.x releases, so compatible requirements select the patch.
+version = "1.999.0"
+edition.workspace = true
+publish.workspace = true
+repository.workspace = true
+license.workspace = true
+description = "rind-aws-lc-rs under aws-lc-rs's name, for a binary's [patch.crates-io]"
+
+# Forward aws-lc-rs's features, except fips: rind is not FIPS validated.
+[features]
+default = ["aws-lc-sys", "alloc", "ring-io", "ring-sig-verify"]
+alloc = ["rind-aws-lc-rs/alloc"]
+asan = ["rind-aws-lc-rs/asan"]
+aws-lc-sys = ["rind-aws-lc-rs/aws-lc-sys"]
+bindgen = ["rind-aws-lc-rs/bindgen"]
+dev-tests-only = ["rind-aws-lc-rs/dev-tests-only"]
+legacy-des = ["rind-aws-lc-rs/legacy-des"]
+non-fips = ["rind-aws-lc-rs/non-fips"]
+prebuilt-nasm = ["rind-aws-lc-rs/prebuilt-nasm"]
+ring-io = ["rind-aws-lc-rs/ring-io"]
+ring-sig-verify = ["rind-aws-lc-rs/ring-sig-verify"]
+test_logging = ["rind-aws-lc-rs/test_logging"]
+unstable = ["rind-aws-lc-rs/unstable"]
+wipe = ["rind-aws-lc-rs/wipe"]
+
+[dependencies]
+rind-aws-lc-rs = { version = "1", default-features = false }
