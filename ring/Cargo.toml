@@ -11,15 +11,17 @@ description = "rind-ring under ring's name, for a binary's [patch.crates-io]"
 
 # Each of ring 0.17's features, so any feature a dependency requests resolves.
 # Cargo resolves features for every target, so even quinn-proto's wasm-only
-# `wasm32_unknown_unknown_js` must exist. All change nothing.
+# `wasm32_unknown_unknown_js` must exist. `alloc` and `std` reach rind-ring,
+# which gates RSA and the errors' `std::error::Error` impls on them as ring
+# does; the rest change nothing.
 [features]
 default = ["alloc", "dev_urandom_fallback"]
-alloc = []
+alloc = ["rind-ring/alloc"]
 dev_urandom_fallback = []
 less-safe-getrandom-custom-or-rdrand = []
 less-safe-getrandom-espidf = []
 slow_tests = []
-std = ["alloc"]
+std = ["alloc", "rind-ring/std"]
 test_logging = []
 unstable-testing-arm-no-hw = []
 unstable-testing-arm-no-neon = []
@@ -28,4 +30,4 @@ wasm32_unknown_unknown_js = []
 [dependencies]
 # The version fails to resolve once rind-ring moves past ring 0.17, so this
 # shim follows it.
-rind-ring = "0.17"
+rind-ring = { version = "0.17", default-features = false }
