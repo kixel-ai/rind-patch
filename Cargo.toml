@@ -8,5 +8,5 @@ resolver = "3"
 edition = "2024"
 # crates.io has each member's name, so none is published.
 publish = false
-repository = "https://github.com/moq-dev/rind-patch"
+repository = "https://github.com/kixel-ai/rind-patch"
 license = "Apache-2.0 OR ISC OR MIT-0"
