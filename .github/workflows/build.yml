@@ -3,12 +3,15 @@ name: Build
 permissions:
   contents: read
 
+# Runs after a change lands on main, never on a pull request: run its steps,
+# `cargo fmt --all --check` and
+# `cargo clippy --workspace --all-features -- --deny warnings`, before pushing.
 on:
   push:
     branches:
       - main
-  pull_request:
 
+# A newer push to main supersedes an older one's build.
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
